@@ -1,0 +1,13 @@
+Lecture 1: 
+learn about the herd, How to start a basic project of laravel
+
+Lecture 2:
+Learn how can we create the route and what are the different thing we can return inside the routes
+like if we return the string it will direct display the value of the string on the website
+if we return the array from there it will display the json data over there
+if we return the blade file name from there then it will display the ui of the blade file on the website
+
+Lecture 3:
+we learn the what is the difference between the simple .php file and blade file
+when we create the blade file then it can be converted to the component based architecture in .php we are Not
+Also learn the use of slot in blade
