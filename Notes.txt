@@ -18,3 +18,10 @@ Learn the attributes, its just similar as a slot but its use for passing the def
 Then learn something about the tailwind css
 And How can we pass the more than one slot 
 
+
+Lecture 5:
+learn more on tailwind 
+=>
+learn about the difference between the props and attributes
+active is a boolean prop controlling the link’s “active” styling and aria-current attribute.
+$attributes is a catch-all for any extra attributes (e.g., href, classes) passed into the component.
