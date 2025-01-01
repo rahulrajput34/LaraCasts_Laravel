@@ -11,3 +11,10 @@ Lecture 3:
 we learn the what is the difference between the simple .php file and blade file
 when we create the blade file then it can be converted to the component based architecture in .php we are Not
 Also learn the use of slot in blade
+
+
+Lecture 4:
+Learn the attributes, its just similar as a slot but its use for passing the default css
+Then learn something about the tailwind css
+And How can we pass the more than one slot 
+
