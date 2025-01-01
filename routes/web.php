@@ -10,6 +10,8 @@ Route::get('/', function () {
 
 
 
+
+
 // if I pass the file name over here It will display the ui of that
 // if I pass the string over there it will display the what ever inside the string
 // if I pass the array over there it will display the array as a json
