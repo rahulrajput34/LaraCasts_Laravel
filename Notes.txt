@@ -1,16 +1,21 @@
 Lecture 1: 
 learn about the herd, How to start a basic project of laravel
 
+
+
 Lecture 2:
 Learn how can we create the route and what are the different thing we can return inside the routes
 like if we return the string it will direct display the value of the string on the website
 if we return the array from there it will display the json data over there
 if we return the blade file name from there then it will display the ui of the blade file on the website
 
+
+
 Lecture 3:
 we learn the what is the difference between the simple .php file and blade file
 when we create the blade file then it can be converted to the component based architecture in .php we are Not
 Also learn the use of slot in blade
+
 
 
 Lecture 4:
@@ -71,3 +76,51 @@ When we migrate it
 
 If we want to run all the new migration which we created 
 php artisan migrate
+
+
+
+Lecture 9:
+Learning about the Eloquent
+Eloquent is ORM
+
+ORM stands for Object-Relational Mapping. It's a programming technique used to interact with a database in an object-oriented way. Essentially, it allows developers to work with database records using classes and objects instead of writing raw SQL queries.
+
+Benefits of ORM
+Developer Productivity: Simplifies database interactions and reduces boilerplate code.
+Database Agnosticism: Makes it easier to switch between different database systems.
+Readability: Code is easier to read and maintain compared to raw SQL.
+
+To convert the modal into the Eloquent modal we extends to the Modal class
+
+Means we can use the all the methods available inside the modal and interact with the table data inside the very simple way 
+
+=> To play it with the given things we can use this below command
+php artisan tinker
+
+But when we try to play with the data of the table that time laravel gives the automatic protection so someone can't change the data of the table
+
+Illuminate\Database\Eloquent\MassAssignmentException  Add [title] to fillable property to allow mass assignment on [App\Models\Job].
+
+This is the error we got
+
+Still If we want to play around the data by tinker then we need to manually change the property of that behavior.
+
+
+==> it will explains the any command we pass
+php artisan help make:modal
+
+
+==> from the command we can do many things together and we can add any particular thing
+==> There are some of the examples of that
+Generate a migration, seeder, factory, policy, resource controller, and form request classes for the model
+-a, --all             
+
+Create a new controller for the model
+-c, --controller      
+
+Create a new factory for the model
+-f, --factory
+
+==> To create the Model and the migration together
+php artisan make:model Jobs -m
+
