@@ -124,3 +124,40 @@ Create a new factory for the model
 ==> To create the Model and the migration together
 php artisan make:model Jobs -m
 
+
+TODO: Lecture 10: Factory
+
+==> we are using it for generating the  dummy data
+
+==> We can create the users by giving the permission inside Models/User.php and inside the tinker running the command
+
+App\Models\User::factory()->create() 
+
+What if we want to create the 50 dummy records
+
+App\Models\User::factory(50)->create() 
+
+
+==> To create the new factory
+php artisan make:factory
+
+  What should the factory be named?
+❯ JobFactory
+
+Here we provide the name of the model and then factory JobFactory means Job is the model name and the Factory is for the  factory
+
+==> Now we got the salaries inside the different values But what if we want the same from the template from the factory but just want to change the one value whenever needed that time we give the values inside the unverified and us it
+
+==> So What I need to do is to inside the JobFactory I need to pass the logic of it inside the unverified In create it inside the tinker as we creates the dummy data
+
+==> Create the Employer modal and migration together
+php artisan make:model Employer -m
+
+=> Now we want to pass the  Employer as a foreign key over here
+We gave the value unsignedInteger because when we create the foreign id of the employee That time we need to pass the value of the  inside this table according to this table id. 
+Else: we can give 
+'employer_id' => Employer::factory(),
+
+=> Now we can generates the data and give the relationship between  the employee and user as well
+
+TODO: Lecture 11
