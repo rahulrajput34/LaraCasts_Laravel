@@ -25,3 +25,49 @@ learn more on tailwind
 learn about the difference between the props and attributes
 active is a boolean prop controlling the link’s “active” styling and aria-current attribute.
 $attributes is a catch-all for any extra attributes (e.g., href, classes) passed into the component.
+
+
+
+Lecute 6:
+Creating the data for the jobs and Display on the UI
+learn some more about the router and blade.php
+
+
+Lecture 7: 
+We are put the data we defined inside the separate class inside the Modals and get to know about that how the modals are helpful
+Also learn about how can we define all the separate task of the routes inside the modal as a class method
+How to display the ERROR
+
+
+
+Lecture 8:
+How to create the database in the  My Table
+How to connect this project to that database
+Understand the how we can create the table using the php migration
+
+pros of migration
+==> we do not need to look at the structure of the database by going to each table
+==> By the script we can direct Understand the structure    
+Schema::create('users', function (Blueprint $table)
+Here the first one is our database name
+
+
+==> we can check it by just give the command php artisan
+migrate:fresh             Drop all tables and re-run all migrations
+  migrate:install           Create the migration repository
+  migrate:refresh           Reset and re-run all migrations ==> not gonna do in production
+  migrate:reset             Rollback all database migrations
+  migrate:rollback          Rollback the last database migration
+  migrate:status            Show the status of each migration
+
+
+php artisan make:migration
+
+  What should the migration be named?
+❯ create_job_listings_table
+
+This would create the table named job_listings
+When we migrate it
+
+If we want to run all the new migration which we created 
+php artisan migrate
