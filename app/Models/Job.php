@@ -18,5 +18,12 @@ class Job extends Model
         'title',
         'salary',
     ];
+
+    
+    // To access the employer of the job
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
     
 }

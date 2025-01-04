@@ -160,4 +160,44 @@ Else: we can give
 
 => Now we can generates the data and give the relationship between  the employee and user as well
 
+
+
 TODO: Lecture 11
+Now we have the access of the job But we want to access the employer from the job
+Conman sense => Whenever we run the any modal method to get the any data from the database or put into the database it behind the scene runs the sql query
+
+=> Inside the tinker we first run the command 
+ $job = App\Models\Job::first();
+
+ Then we run the
+ $job->employer;
+
+ Then we run the 
+ $job->employer->name;
+
+ So, it retrieves the first Job record, accesses the related employer for that job, and then fetches the name attribute of the employer
+
+ In order to do that between each query it must wait and this concept is called the Lazy loading inside the laravel
+
+=> Lazy Loading (Default Behavior)
+When you execute $job = App\Models\Job::first();, it fetches the first record from the jobs table.
+
+When you call $job->employer;, Laravel notices that the employer relationship hasn't been loaded yet, so it performs a separate query to fetch the related employer record.
+
+Similarly, when you call $job->employer->name;, the employer record is already loaded, so it simply retrieves the name attribute without another query.
+
+
+
+===> We can also get the Value of the employer and get the value of jobs which is posted by that particular employer
+-- we can run the same query for the employer and do all these things
+-- We need to pass all the methods for that inside the employer method 
+
+==> Get the first employer
+$employer = App\Models\Employer::first(); 
+
+==> Collection of the job
+$emplyer->jobs;  
+
+
+
+This is how we can retrieve the employer from the job and jobs from the employer because of the relationship between them
