@@ -361,3 +361,25 @@ we can also use the simplePaginate method
 We can also use the cursorPaginate method
 
 For too many of records the cursorPaginate is the best option to choose
+
+TODO: Lecture 15:
+Database Seeders
+
+==> If we want to drop all the table and create all the table again that time we run the below command
+php artisan migrate:fresh
+
+==> After doing this we need to pass all the value again using factory function for the each tables
+This is not a good thing to do that
+
+So inside the seeders we give all the data we want and whenever we want drop a table we get all the dummy data from just one command
+
+==> We usually creates the different seeder files for the different data to separate things properly
+==> To create a new seeder
+
+
+php artisan make:seeder
+
+
+We can also run the particular class of the seeder by passing the command
+php artisan db:seeder --class=JobSeeder
+
