@@ -201,3 +201,107 @@ $emplyer->jobs;
 
 
 This is how we can retrieve the employer from the job and jobs from the employer because of the relationship between them
+
+
+
+📘TODO:  Lecture 12: Pivot Tables and BelongsToMany Relationships
+> **A pivot table** is a table used in relational databases to establish a many-to-many relationship between two other tables.
+
+- 📌 **A job can have multiple tags.**
+- 📌 **A tag can belong to multiple jobs.**
+
+
+
+⚙️ Steps to Create and Manage Pivot Tables:
+1. 🛠️ **Create the Pivot Table**:
+   - Add the constraints.
+   - Use `cascade` on delete so that if one is deleted, the related ones are deleted automatically.
+
+
+2. 🖥️ **Enable Foreign Keys**:
+   - Run the command:
+     ```sql
+     PRAGMA foreign_key=on;
+     ```
+   - **Check if the query runs perfectly:**
+     ```sql
+     PRAGMA foreign_key;
+     ```
+     - **Output `1`:** Query ran successfully.
+     - **Output `0`:** Query did not run successfully.
+
+
+3. 🗂️ **Define Foreign Keys in Code**:
+   - After the above steps, define all the foreign key constraints in the code.
+   - Manually specify foreign keys where required.
+
+
+
+🔗 Attach and Retrieve Foreign Key Values:
+- **Attach another ID as a foreign key**:
+  ```php
+  $tag->jobs()->attach(App\Models\Job::find(7));
+  ```
+
+- **Get current values**:
+  ```php
+  $tag->jobs()->get();
+  ```
+
+---
+
+📝 Important Note:
+> **Whenever I want to define the foreign key is inside the migration, and whatever the relationship of that foreign key is, I need to define it inside the Model class.**
+
+---
+
+⚠️ Be Careful When Creating Foreign Key Constraints:
+1. **Create the Migration**:
+   - Define the schema in the migration.
+
+2. **Run the Migration**:
+   - Use `php artisan migrate`.
+
+3. **Create the Model**:
+   - Define the foreign key relationships in the model.
+
+4. **Review Names**:
+   - Check which values need to be rewritten and which Laravel handles correctly.
+
+5. **Verify Relationships**:
+   - Review each relationship to determine which require manual changes to foreign keys.
+
+
+========================>     🧩 Additional Notes    <=========================
+📝 How does Laravel name tables?
+
+Laravel automatically names tables based on the model name:
+A model called Job will create a table named jobs.
+A model called Tag will create a table named tags.
+For pivot tables (tables connecting two other tables), Laravel combines the model names alphabetically:
+For example, Job and Tag will create a pivot table called job_tag.
+Why is this important?
+
+If you don’t follow these naming rules, you’ll need to manually tell Laravel the correct table names.
+
+
+
+📚 Other important Laravel rules:
+Default Primary Key:
+
+Laravel expects every table to have a column called id as the primary key.
+If you use a different name, you must tell Laravel in the model.
+Timestamps:
+
+Laravel adds two special columns to every table:
+created_at to show when the row was created.
+updated_at to show when the row was last updated.
+If you don’t want these columns, you can turn them off in the model.
+Foreign Key Names:
+
+Laravel expects foreign keys to follow this format: {table_name}_id.
+For example, in the jobs table, a foreign key for employers would be called employer_id.
+If your foreign key has a different name, you need to tell Laravel.
+Custom Table Names:
+
+If your table name doesn’t follow Laravel’s rules, you need to let Laravel know by specifying the table name in the model.

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             // $table->unsignedInteger('employer_id');
             // Create a foreign key column for the employer_id column
-            $table->foreignIdFor(\App\Models\Employer::class);
+            $table->foreignIdFor(\App\Models\Employer::class)->constrained()->onDelete('cascade');
             $table->string('title');
             $table->string('salary');
             $table->timestamps();

@@ -20,10 +20,19 @@ class Job extends Model
     ];
 
     
-    // To access the employer of the job
+    // Here we are defining the one-to-many relationship between the jobs and employers
     public function employer()
     {
         return $this->belongsTo(Employer::class);
+    }
+
+
+    // Here we are defining the many-to-many relationship between the jobs and tags
+    public function tags()
+    {
+        // Here its gonna take by default foreign key named job_id because its a Job model
+        // So we need to pass the job_listing_id as the foreign key manually over here
+        return $this->belongsToMany(Tag::class, foreignPivotKey: 'job_listing_id');
     }
     
 }

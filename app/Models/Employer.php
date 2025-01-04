@@ -12,11 +12,16 @@ class Employer extends Model
     use HasFactory;
 
 
-    // This will give the Collection of the jobs of the employer because we give the hasMany relationship  
-    // We can also loop over it because the response gonna be a collection
+    // Here we are defining the one-to-many relationship between the employers and jobs
     public function jobs()
     {
         return $this->hasMany(Job::class);
+    }
+
+    // Here we are defining the one-to-many relationship between the employers and users
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
     
 }
