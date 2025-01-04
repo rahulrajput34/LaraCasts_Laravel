@@ -305,3 +305,27 @@ If your foreign key has a different name, you need to tell Laravel.
 Custom Table Names:
 
 If your table name doesn’t follow Laravel’s rules, you need to let Laravel know by specifying the table name in the model.
+
+
+TODO: Lecture 13
+Eager loading and the N+1 problem
+
+==> To set the debug bar for the laravel
+composer require barryvdh/laravel-debugbar --dev
+
+
+==> When I want to display each the employer with their job on the webpage
+<div >{{ $job->employer->name }}</div>
+Its gonna run the query every time we want to fetch the record
+Like if I 13 employee with their jobs inside the database and when I want to fetch them that time every time I fetch the record it gonna run the query and this is not the good practice to the query each time
+==> This problem is called N + 1 problem  
+
+$jobs = Job::all(); 
+job with the relationship name and then get
+$jobs = Job::with('employer')->get();   
+
+instead of the first one we use the second one and get rid of the problem of the lazy loading
+
+==> We can also disable the lazy loading in our whole database by just adding a below line inside the Providers/AppServiceProvider.php
+Model::preventLazyLoading();
+

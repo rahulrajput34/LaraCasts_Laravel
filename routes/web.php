@@ -12,8 +12,11 @@ Route::get('/', function () {
 
 
 Route::get('/jobs', function () {
+    // TODO: this is how we can get rid of the n+1 problems
+    // job with the relationship name and then get
+    $jobs = Job::with('employer')->get();   
     return view('jobs', [
-        'jobs' => Job::all()
+        'jobs' => $jobs
     ]);
 });
 
