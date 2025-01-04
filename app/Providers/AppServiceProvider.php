@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,5 +23,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // We gonna remove the lazy loading of the relationships by adding the below line
         Model::preventLazyLoading();
+
+        // If we want the bootstrap for ui of pagination
+        // Paginator::useBootstrapFive();
     }
 }

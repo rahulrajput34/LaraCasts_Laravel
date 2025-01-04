@@ -329,3 +329,35 @@ instead of the first one we use the second one and get rid of the problem of the
 ==> We can also disable the lazy loading in our whole database by just adding a below line inside the Providers/AppServiceProvider.php
 Model::preventLazyLoading();
 
+
+TODO: Lecture 14
+Pagination
+
+==> When we do the Job::with('employer')->get() it gonna get the all the records which are available inside the database it might not be good practice some time
+
+==> To get rid or this concept we are using the concept of the pagination over here
+==> Pagination gonna get the limited number of the data we want from the database wherever we needed we do not to fetch all the data
+
+$jobs = Job::with('employer')->paginate(3);   
+
+And just add the blade
+{{ $jobs->links() }}
+
+It will show the good UI and pagination
+
+
+
+We can also access this pagination folder to change the UI of that if we want
+==>
+php artisan vendor:publish
+
+Then select whatever you want here we want the pagination
+
+
+
+There is also a one small issue over there if we have many record then showing the page number for all not make sense because its gonna take the time to load we can change it from the tailwind file we got from the above command
+
+we can also use the simplePaginate method
+We can also use the cursorPaginate method
+
+For too many of records the cursorPaginate is the best option to choose
