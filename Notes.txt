@@ -508,5 +508,11 @@ php artisan route:list --except-vendor
 ==> We can also except something if we don’t want that functionality from the default
 ==> We also have only over there if we want only that one
 
+TODO: Lecture 20
+Starter Kits, Breeze, and Middleware
 
+We use these starter kits and Breeze at the Beginning of the project
+By using the Breeze we can do all the authorization functionality (Register, login, logout, password change)in just 20 second(just install the breeze kit) so its very fast and good
+
+Middleware we know that already
 
