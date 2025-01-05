@@ -399,3 +399,13 @@ Forms and CSRF(Cross-Site request forgery)
 protected $guarded = [];
 
 
+TODO: Lecture 17
+basic Validation 
+
+==> Just use the below one before post the data to the database
+==> Also give the required inside the input filed on client side
+==> Read the documentation for the validation if want anything extra
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
