@@ -383,3 +383,19 @@ php artisan make:seeder
 We can also run the particular class of the seeder by passing the command
 php artisan db:seeder --class=JobSeeder
 
+TODO: Lecture 16
+Forms and CSRF(Cross-Site request forgery)
+
+==> We put all the job related UI inside the jobs and give the command naming conventions index, show, creates and many more
+==> We also learnt about the why we need to put the /job/create before the route /job/{id}
+
+==> We have created the form and  pass the route /jobs give in it  with post req and make the new route for it using the post req but still its not getting the values because of the Cors Policy and got 419
+
+==> We need to allow the req from giving the @csrf inside the blade 
+
+==> But we show that the fillable field is little bit annoying because every time we want we need to go there and change it
+
+==> Do disable that feature we gonna go to Models/job.php and give the
+protected $guarded = [];
+
+
