@@ -3,25 +3,28 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 
 
 Route::view('/', 'home');
+Route::view('/contact', 'contact');
 
-// Route::controller(JobController::class)->group(function () {
-//     Route::get('/jobs', 'index');
-//     Route::get('/jobs/create', 'create');
-//     Route::post('/jobs', 'store');
-//     Route::get('/jobs/{job}', 'show');
-//     Route::get('/jobs/{job}/edit', 'edit');
-//     Route::patch('/jobs/{job}', 'update');
-//     Route::delete('/jobs/{job}', 'destroy');
-// });   
-
-
-// If we do not want to anything above
-// Route::resource('jobs', JobController::class, [
-//     'except' => ['show']
-// ]);
 
 Route::resource('jobs', JobController::class);
-Route::view('/contact', 'contact');
+
+
+// auth
+
+// To take the user to the registration form when he clicks on the register link.
+Route::get('/register', [RegisterController::class, 'create']);
+
+// When the form is submitted the store method will be called to validate the form and create the user.
+Route::post('/register', [RegisterController::class, 'store']);
+
+
+// To take the user to the login form when he clicks on the login link.
+Route::get('/login', [SessionController::class, 'create']);
+
+// When the form is submitted the store method will be called to validate the form and log the user in.
+Route::post('/login', [SessionController::class, 'store']);

@@ -516,3 +516,19 @@ By using the Breeze we can do all the authorization functionality (Register, log
 
 Middleware we know that already
 
+TODO: Lecture 21
+Make a Login and Registration System From Scratch
+We have use some common practice to create the login and Registration form
+Then we give the routes according to different request
+We created the controller RegisterController for the Register login and SessionController for the login logic
+There are some logic for the blade as well
+@guest
+    <x-nav-link href="/login" :active="request()->is('login')">
+      Log In
+    </x-nav-link>
+    <x-nav-link href="/register" :active="request()->is('register')">
+      Register
+    </x-nav-link>
+@endguest
+Means when the user is guest then and only then show both the element else not
+There are other rules we can check on the documentation 
