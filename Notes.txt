@@ -432,3 +432,81 @@ validate, authorize, update, redirect
 ==> When we want to  handle two forms inside the one directory we pass the another hidden form and pass that inside where we want
 ==> here we passed inside the button of delete because where I want to request to be proceed
 
+TODO: Lecture 19
+Routes Reloaded - 6 Essential Tips
+
+==> Tip 1
+==> Old code
+Route::get('/jobs/{id}', function ($id) {
+    $job = Job::find($id);
+
+    return view('jobs.show', [
+        'job' => $job
+    ]);
+});
+
+==> new code
+Route::get('/jobs/{job}', function (Job $job) {
+    return view('jobs.show', [
+        'job' => $job
+    ]);
+});
+
+
+==> tip 2
+Put the logic inside the router to the controller
+
+php artisan make:controller
+
+This is how our new router looks like
+Route::get('/jobs', [JobController::class, 'index']);
+public function index()
+    {
+        $jobs = Job::with('employer')->latest()->cursorPaginate(3);
+        return view('jobs.index', [
+            'jobs' => $jobs
+        ]);
+    }
+
+==> Tip 3
+For the static pages which do not do anything
+
+Old 
+Route::get('/', function () {
+    return view('home');
+});
+
+New
+Route::view('/', 'home');
+
+==> Tip 4
+List your Routes
+
+command to show all the routes
+php artisan route:list
+
+To see routes created by us
+php artisan route:list --except-vendor 
+
+==> Tip 5
+Route Groups
+We need to pass the JobController::class every time we create the route
+We can Groups them together and pass all the  routes inside it without anything
+
+==> Tip 6
+Route Resource
+This include all 7 routes by default inside it
+If we comment the group of routes still our code gonna work because of  the Route Resource
+
+Route::resource('jobs', JobController::class);
+
+This include all those routes by default
+if We want we can check all those by just passing the command
+php artisan route:list --except-vendor 
+
+==> We just need to make sure our controller has same naming conventions 
+==> We can also except something if we don’t want that functionality from the default
+==> We also have only over there if we want only that one
+
+
+

@@ -2,103 +2,26 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Job;
+use App\Http\Controllers\JobController;
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/', 'home');
 
-// Index
-Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->latest()->cursorPaginate(3);   
-    return view('jobs.index', [
-        'jobs' => $jobs
-    ]);
-});
-
-
-// Store
-Route::post('/jobs', function () {
-
-    // Validate the request
-    request()->validate([
-        'title' => ['required', 'min:3'],
-        'salary' => ['required']
-    ]);
+// Route::controller(JobController::class)->group(function () {
+//     Route::get('/jobs', 'index');
+//     Route::get('/jobs/create', 'create');
+//     Route::post('/jobs', 'store');
+//     Route::get('/jobs/{job}', 'show');
+//     Route::get('/jobs/{job}/edit', 'edit');
+//     Route::patch('/jobs/{job}', 'update');
+//     Route::delete('/jobs/{job}', 'destroy');
+// });   
 
 
-    // Put it in the database
-    Job::create([
-        'title' => request('title'),
-        'salary' => request('salary'),
-        'employer_id' => 1
-    ]);
-    return redirect('/jobs');
-});
+// If we do not want to anything above
+// Route::resource('jobs', JobController::class, [
+//     'except' => ['show']
+// ]);
 
-
-// Create
-Route::get('/jobs/create', function () {
-    return view('jobs.create');
-});
-
-
-// Show
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
-
-    return view('jobs.show', [
-        'job' => $job
-    ]);
-});
-
-
-// Edit
-Route::get('/jobs/{id}/edit', function ($id) {
-    $job = Job::find($id);
-
-    return view('jobs.edit', [
-        'job' => $job
-    ]);
-});
-
-// Update  
-// We passed same uri because its request to patch which is diff from req to get and our framework will understand it
-Route::patch('/jobs/{id}', function ($id) {
-    // validate
-    request()->validate([
-        'title' => ['required', 'min:3'],
-        'salary' => ['required']
-    ]);
-
-    // authorize 
-    // update 
-    $job = Job::findOrFail($id);  // findOrFail will throw 404 if not found so we do not need to worry about null
-    $job->update([
-        'title' => request('title'),
-        'salary' => request('salary')
-    ]);
-    // redirect
-    return redirect('/jobs/'.$job->id);
-});
-
-
-// Destroy
-// Here as well we passed same uri because its delete req
-Route::delete('/jobs/{id}', function ($id) {
-    // authorize    
-    // delete  
-    // $job = Job::findOrFail($id);
-    // $job->delete();
-    // We can inline it
-    Job::findOrFail($id)->delete();
-
-    // redirect
-    return redirect('/jobs');
-});
-
-
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::resource('jobs', JobController::class);
+Route::view('/contact', 'contact');
