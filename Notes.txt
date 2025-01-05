@@ -409,3 +409,26 @@ basic Validation
         'title' => ['required', 'min:3'],
         'salary' => ['required']
     ]);
+
+
+TODO: Lecture 18
+==> Add the  edit and delete functionality
+
+==> inside the blade we can pass the both because as soon as  its Eloquent its doesn’t care
+==> Here the Job is the variable which we passed with the find method to get a one job according to
+{{ $job['title'] }}
+{{ $job->title }}
+
+==> Be consistent with what you passed 
+
+==> Follow the steps for the update and the delete the job and its Easy
+==> update
+validate, authorize, update, redirect 
+==> authorize, delete, redirect
+
+==> When we post the update req that time we need to pass the post req and suggest the hint we are sending the patch req because our browser don’t Understand the patch request like below
+        @method('PATCH')
+
+==> When we want to  handle two forms inside the one directory we pass the another hidden form and pass that inside where we want
+==> here we passed inside the button of delete because where I want to request to be proceed
+
