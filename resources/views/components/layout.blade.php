@@ -63,6 +63,14 @@
                             Register
                         </x-nav-link>
                     @endguest
+
+                    {{-- We use the form with post request to logout the user instead of giving the anchor tag to it --}}
+                    @auth
+                        <form method="POST" action="/logout">
+                            @csrf
+                            <x-form-button type="submit" class="text-white">Log Out</x-form-button>
+                        </form>
+                    @endauth
                 </div>
             </div>
         </div>

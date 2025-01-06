@@ -12,7 +12,8 @@
                             Email
                         </x-form-label>
                         <div class="mt-2">
-                            <x-form-input name="email" id="email" type="email" placeholder="email" required />
+                            {{-- This  is how we can get the old value of the email  if we want --}}
+                            <x-form-input name="email" id="email" type="email" :value="old('email')" placeholder="email" required />
                             <x-form-error name="email"></x-form-error>
                         </div>
                     </x-form-field>

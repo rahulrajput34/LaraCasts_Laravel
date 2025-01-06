@@ -28,3 +28,6 @@ Route::get('/login', [SessionController::class, 'create']);
 
 // When the form is submitted the store method will be called to validate the form and log the user in.
 Route::post('/login', [SessionController::class, 'store']);
+
+// To log out the user
+Route::post('/logout', [SessionController::class, 'destroy']);

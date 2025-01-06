@@ -532,3 +532,14 @@ There are some logic for the blade as well
 @endguest
 Means when the user is guest then and only then show both the element else not
 There are other rules we can check on the documentation 
+
+
+TODO: Lecture 22
+Backend Logic of the Login and Registration From
+First we write the RegisterController register and login inside the website and 
+Then create the another form and make the logout req with post req with logic in SessionController || always use the post req for logout
+:value="old('email')
+Then inside the SessionController login logic
+Inside the gives request()->session()->regenerate() to prevent the session hijack
+Then pass the  :value="old('email') to store the old value of the email
+Also adds the routes wherever we want
