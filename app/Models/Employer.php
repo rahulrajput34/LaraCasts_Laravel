@@ -24,4 +24,10 @@ class Employer extends Model
         return $this->belongsToMany(Tag::class);
     }
     
+
+    // Here we are defining the one-to-many relationship between the employers and users
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

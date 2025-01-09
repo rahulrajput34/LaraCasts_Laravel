@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('employers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            // We created this one so that we need to pass this one from the employer factory  to generate the foreign key constrain user_id
+            $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
         });
     }

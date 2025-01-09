@@ -543,3 +543,11 @@ Then inside the SessionController login logic
 Inside the gives request()->session()->regenerate() to prevent the session hijack
 Then pass the  :value="old('email') to store the old value of the email
 Also adds the routes wherever we want
+
+TODO: Lecture 23
+6 Steps to Authorization Mastery
+
+First we generates the relationship between a customer and a user
+Then we move on the these steps
+==> step 1
+Inline Authorization

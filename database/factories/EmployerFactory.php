@@ -16,8 +16,10 @@ class EmployerFactory extends Factory
      */
     public function definition(): array
     {
+        // This is how we can pass the foreign key constrain user_id
         return [
             'name' => $this->faker->company,
+            'user_id' => \App\Models\User::factory(),
         ];
     }
 }
